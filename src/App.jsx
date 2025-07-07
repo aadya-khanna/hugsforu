@@ -9,6 +9,16 @@ function App() {
   const [isKissing, setIsKissing] = useState(false); // State for kiss effect
   const [isHugging, setIsHugging] = useState(false); // State for hug effect
   const [emojis, setEmojis] = useState([]); // State for raining emojis
+  const [displayedExpression, setDisplayedExpression] = useState(''); // State for displaying expression
+  const expressions = [
+    "thinking of you",
+    "Wish you were here!",
+    "DRINK WATER i know u prob wouldn't have!",
+    "You're so gorgoeus MY QUEEN",
+    "KITH FROM ME!",
+    "WANNA PLAY ROBLOX!",
+    "I love youuuuuu"
+  ];
   const safePassword = 'iloveaadya';
 
   useEffect(() => {
@@ -83,39 +93,39 @@ function App() {
     <>
         {isLoggedIn ? (
           <>
-            <div className="text-primary flex min-h-screen justify-center items-center">
+            <div className="text-primary min-h-screen flex justify-center items-center">
                 <h1 className="text-6xl font-author font-semibold"> Remember me? </h1>
             </div>
 
-            <div className="text-primary flex min-h-screen justify-center items-center">
+            <div className="text-primary min-h-screen flex justify-center items-center">
                 <h1 className="text-6xl font-author font-semibold"> It's your girlfriend back at it again </h1>
             </div>
 
-            <div className="text-primary flex min-h-screen justify-center items-center">
+            <div className="text-primary min-h-screen flex justify-center items-center">
               <h1 className="text-6xl font-author font-semibold"> HEHEHEHEHE</h1>
             </div>
 
-            <div className="text-primary flex min-h-screen justify-center items-center">
+            <div className="text-primary min-h-screen lex justify-center items-center">
               <h1 className="text-6xl font-author font-semibold"> UAGH I love saying "your girlfriend" </h1>
             </div>
 
-            <div className="text-primary flex min-h-screen justify-center items-center">
+            <div className="text-primary min-h-screen flex justify-center items-center">
               <h1 className="text-6xl font-author font-semibold"> You're wondering why I did this  </h1>
             </div>
 
-            <div className="text-primary flex min-h-screen justify-center items-center">
+            <div className="text-primary min-h-screen flex justify-center items-center">
               <h1 className="text-6xl font-author font-semibold"> It's because I love youuuu </h1>
             </div>
 
-            <div className="text-primary flex min-h-screen justify-center items-center">
+            <div className="text-primary  min-h-screen flex justify-center items-center">
               <h1 className="text-6xl font-author font-semibold"> and hate to see you sad... </h1>
             </div>
 
-            <div className="text-primary flex min-h-screen justify-center items-center">
+            <div className="text-primary min-h-screen flex justify-center items-center">
               <h1 className="text-6xl font-author font-semibold"> That's why I hope you enjoy this my love</h1>
             </div>
 
-            <div className="text-primary flex min-h-screen gap-40 justify-center items-center">
+            <div className="text-primary min-h-80vh flex flex-col sm:flex-row gap-8 sm:gap-40 justify-center items-center">
               <button
                 className="px-6 py-3 bg-secondary text-white text-3xl font-author rounded-base rounded hover:bg-accent"
                 onClick={() => setIsHugging(true)}
@@ -130,8 +140,23 @@ function App() {
                 Kiss :)
               </button>
 
+              <button
+                className="px-6 py-3 bg-secondary text-white text-3xl font-author rounded-base rounded hover:bg-accent"
+                onClick={() => {
+                  const randomIndex = Math.floor(Math.random() * expressions.length);
+                  setDisplayedExpression(expressions[randomIndex]);
+                }}
+              >
+                Miss Me...
+              </button>
+
             </div>
 
+            {displayedExpression && (
+              <div className="text-primary flex justify-center items-center mt-8 pb-20"> 
+                <p className="text-4xl font-author font-semibold">{displayedExpression}</p>
+              </div>
+            )}
             {/* kiss -photo of aadya enlargens, makes custom mp3 noise and it rains kiss emojis  */}
             {isKissing && (
               <div className="kiss-effect-container">
