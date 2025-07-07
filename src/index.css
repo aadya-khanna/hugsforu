@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+#root {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+
+body {
+    background-color: var(--color-background);
+}
+
+
+@theme {
+    --color-background: #FFF4E6;
+    --color-base: #ffe5ec;
+    --color-primary: #ff8fab;
+    --color-secondary: #ff8fab;
+    --color-accent: #fb6f92;
+    --font-author: 'author', sans-serif;
+}
+
+
+@font-face {
+    font-family: 'author';
+    src: url('assets/fonts/Author-Variable.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'author';
+    src: url('assets/fonts/Author-VariableItalic.woff2') format('woff2');
+    font-weight: 100 900; 
+    font-style: italic;
+    font-display: swap;
+}
+  
+/* Kiss Effect Styles */
+.kiss-effect-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; 
+  overflow: hidden; 
+}
+
+.aadya-photo {
+  max-width: 80%; /* Adjust size as needed */
+  max-height: 80%;
+  object-fit: contain;
+  animation: enlarge 2s forwards; /* Animation to enlarge */
+}
+
+@keyframes enlarge {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1.2); /* Enlarge to 120% */
+  }
+}
+
+.emoji-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; 
+}
+
+.kiss-emoji {
+  position: absolute;
+  top: -20px; 
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh); 
+  }
+}
+
+/* Hug Effect Styles */
+.hug-effect-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100; /* Ensure it's on top */
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
+.bear-animation {
+  width: 50%;
+  height: 50%;
+  background-image: url('/bear.png'); /* Use the bear image */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: hug-animation 4s ease-in-out forwards; 
+}
+
+@keyframes hug-animation {
+  0% {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  50% {
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%); /* Walk to center */
+  }
+  75% {
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%) scaleX(1.2); /* Represent opening arms by stretching horizontally */
+  }
+  100% {
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%) scaleX(1); /* Return to normal size */
+  }
+}
+
+.heart-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.heart-particles::before {
+  content: '🩷'; 
+  position: absolute;
+  font-size: 20px;
+  color: hotpink;
+  animation: float-up 3s ease-out forwards;
+}
+
+@keyframes float-up {
+  to {
+    transform: translateY(-200px) scale(1.5); 
+    opacity: 0; 
+  }
+}
+
+.heart-particle {
+  position: absolute;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  animation: float-up 3s ease-out forwards;
+  pointer-events: none; 
+}
